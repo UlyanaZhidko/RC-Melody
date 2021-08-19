@@ -95,6 +95,10 @@ body {
     cursor: pointer;
 }
 
+.carrent-floor {
+    opacity: 1 !important;
+}
+
 .counter-group {
     display: flex;
     flex-direction: column;
