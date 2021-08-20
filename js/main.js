@@ -3,6 +3,9 @@ $(document).ready(function() {
     var counterUp = $(".counter-up"); //отдельный этаж
     var counterDown = $(".counter-down"); // счетчик вверх
     var floorPath = $(".home-image path"); //счетчик вниз
+    var modal = $(".modal"); // модальное окно
+    var modalCloseBtn = $(".modal-close-btn"); // крестик модального окна
+    var viewFlatsBtn = $(".view-flats") // кнопка смотреть квариры на этаже
 
 
     // При наведении на этаж
@@ -11,6 +14,13 @@ $(document).ready(function() {
         carrentFloor = $(this).attr("data-floor"); //значение текущего этажа
         $(".counter").text(carrentFloor); //значение этажа в счетчик
     });
+
+    // открытие модального окна
+    floorPath.on("click", toggleModal);
+    // закрытие модального окна
+    modalCloseBtn.on("click", toggleModal);
+    // открытие модального окна нужного этажа
+    viewFlatsBtn.on("click", toggleModal);
 
     counterUp.on("click", function() { //клик счетчик вверх
         if (carrentFloor < 17) { //проверка значения этажа
@@ -33,7 +43,12 @@ $(document).ready(function() {
             floorPath.removeClass("carrent-floor");
             $(`[data-floor=${usCarrentFloor}]`).toggleClass("carrent-floor");
         }
-
     });
+
+
+    // открытие/закрытие модального окна
+    function toggleModal() {
+        modal.toggleClass("is-open");
+    }
 
 });
